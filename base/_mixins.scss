@@ -63,9 +63,12 @@
 }
 
 @mixin sprites($class, $num, $path){
+   $num_main: $num - 1;
+   $num_final: 100 / $num_main;
+   
    for $i from 1 through $num{
    	#{$class}#{$i}{
-   		background: url($path) 0 (($i - 1)*(100 / ($num-1)))%;
+   		background: url($path) 0 ($i - 1)*percentage($num_final/100);
    		background-size: 100%;
    	}
    }
