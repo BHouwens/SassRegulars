@@ -61,3 +61,12 @@
    	@warn "#{$el} is not a valid pseudo element. Pick 'before' or 'after'";
    }
 }
+
+@mixin sprites($class, $num, $path){
+   for $i from 1 through $num{
+   	#{$class}#{$i}{
+   		background: url($path) 0 (($i - 1)*(100 / ($i-1)))%;
+   		background-size: 100%;
+   	}
+   }
+}
