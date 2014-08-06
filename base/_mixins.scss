@@ -49,3 +49,15 @@
    }
 }
 
+@mixin pseudo($el, $width, $height:$width){
+   if ($el == "before" or $el == "after"){
+   &:#{$el}{
+   	@extend %pseudo;
+   	width: $width;
+   	height: $height;
+   	@content;
+   }
+   }else{
+   	@warn "#{$el} is not a valid pseudo element. Pick 'before' or 'after'";
+   }
+}
