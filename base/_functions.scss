@@ -12,3 +12,25 @@
   	@return null;
   }
 }
+
+
+
+/*=================Math functions====================*/
+
+@function power($base, $exp){
+  $value: $base;
+  
+  @if $exp > 1{
+    @for $i from 2 through $exp{
+      $value: $value * $base;
+    } 
+  }
+  @if $exp < 1{
+    @for $i from 0 through -$exp{
+      $value: $value / $base;
+    }
+  }
+  @return $value;
+}
+
+
