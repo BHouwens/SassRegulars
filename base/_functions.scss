@@ -17,7 +17,7 @@
 
 /*=================Math functions====================*/
 
-@function power($base, $exp){
+@function power($base, $exp: 2){
   $value: $base;
   
   @if $exp > 1{
