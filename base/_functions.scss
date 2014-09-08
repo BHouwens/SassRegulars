@@ -36,6 +36,7 @@
 
 @function log($result, $base: 10){
   $counter: 1;
+  $value: $base;
   @if $result == 1{
     $counter: 0;
   }
@@ -43,10 +44,11 @@
     $counter: 1;
   }
   @else{
-    @while $base <= $result{
-        $base: $base * $base;
+    @while $base < $result{
+        $base: $base * $value;
         $counter: $counter + 1;
     }
   }
   @return $counter;
 }
+
