@@ -34,3 +34,19 @@
 }
 
 
+@function log($result, $base: 10){
+  $counter: 1;
+  @if $result == 1{
+    $counter: 0;
+  }
+  @else if $base == $result{
+    $counter: 1;
+  }
+  @else{
+    @while $base <= $result{
+        $base: $base * $base;
+        $counter: $counter + 1;
+    }
+  }
+  @return $counter;
+}
