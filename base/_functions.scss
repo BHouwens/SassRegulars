@@ -13,6 +13,63 @@
   }
 }
 
+@function convert($value, $curr-unit, $conv-unit){
+  @if $curr-unit == px{
+    @if $conv-unit == percent{
+      @return percentage($value / 16);
+    }
+    @else if $conv-unit == ems{
+      @return $value / 16+em;
+    }
+    @else{
+      @warn "#{$conv-unit} is not a valid output unit";
+      @return null;
+    }
+  }
+  
+  @if $curr-unit == pt{
+    @if $conv-unit == px{
+      @return $value * 1.3333+px;
+    }
+    @else if $conv-unit == percent{
+      @return percentage($value / 12);
+    }
+    @else if $conv-unit == ems{
+      @return $value / 12+em;
+    }
+    @else{
+      @warn "#{$conv-unit} is not a valid output unit";
+      @return null;
+    }
+  }
+  
+  @if $curr-unit == ems{
+    @if $conv-unit == px{
+      @return $value * 16+px;
+    }
+    @else if $conv-unit == percent{
+      @return percentage($value);
+    }
+    @else{
+      @warn "#{$conv-unit} is not valid for the input given";
+      @return null;
+    }
+  }
+  
+  @if $curr-unit == percent{
+    @if $conv-unit == px{
+      @return $value * 16 / 100+px;
+    }
+    @else if $conv-unit == ems{
+      @return $value / 100+ems;
+    }
+    @else{
+      @warn "#{$conv-unit} is not valid for the input given";
+      @return null;
+    }
+  }
+
+}// --- end convert function
 
 
 /*=================Math functions====================*/
