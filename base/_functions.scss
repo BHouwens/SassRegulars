@@ -13,6 +13,13 @@
   }
 }
 
+@function fraction($value){
+  $percentage: percentage(100 / $value);
+  $final: $percentage / 100;
+
+  @return $final;
+}
+
 @function convert($value, $curr-unit, $conv-unit){
   @if $curr-unit == px{
     @if $conv-unit == percent{
